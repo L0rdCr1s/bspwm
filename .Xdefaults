@@ -1,0 +1,26 @@
+
+! urxvt Terminal configurations
+
+URxvt.scrollBar               : false
+URxvt.cursorBlink             : 1
+URxvt.allow_bold              : true
+URxvt.font                    : xft:monaco:size=8
+URxvt.foreground              : #FFFFFF
+URxvt.background              : #151515
+URxvt.cursorColor             : #FF5722
+URxvt.transparent             : false
+urxvt.xftAntialias            : true
+URxvt.internalBorder          :	30
+URxvt.externalBorder          :	0
+URxvt.internalBordercolor     : #151515
+URxvt.allow_bold              : true
+URxvt.colorBD                 : #FF5722
+URxvt.colorIT                 : #bbbbbb
+URxvt.colorUL                 : #999999
+URxvt.highlightColor          : #43A047
+URxvt.highlightTextColor      : #FFFFFF
+URxvt.jumpScroll              : true
+URxvt.fading                  : 5
+URxvt.borderColor             : #151515
+URxvt.saveLines               : 4000
+URxvt.chdir                   : /run/media/cris

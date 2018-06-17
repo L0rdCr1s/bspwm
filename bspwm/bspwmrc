@@ -1,0 +1,79 @@
+#! /bin/sh
+
+################### workspace design #####################################
+
+## workspace names
+bspc monitor -d 'A' 'u' 't' 'o' 'B' '0' 't'
+
+## Desktop A My programming editors workspace
+bspc rule -a leafpad desktop='^1' follow=on focus=on
+bspc rule -a pycharm desktop='^1' follow=on focus=on
+bspc rule -a code desktop='^1' follow=on focus=on
+bspc rule -a atom desktop='^1' follow=on focus=on
+
+## Desktop u keep my terminals at this workspace
+bspc rule -a Xfce4-terminal desktop='^2' follow=on focus=on
+bspc rule -a urxvt desktop='^2' follow=on focus=on
+
+## Desktop t My Web Browsing workspace
+bspc rule -a Firefox-esr desktop='^3' follow=on focus=on
+bspc rule -a Chromium desktop='^3' follow=on focus=on
+
+
+## Desktop o (file-manager)
+bspc rule -a Thunar desktop='^4' follow=on focus=on
+
+## Desktop B (graphic-utilities)
+bspc rule -a Nitrogen desktop='^5' follow=on focus=on
+bspc rule -a gimp desktop='^5' follow=on focus=on
+
+## THE REMAINING ARE USELESS I GUESS
+
+
+
+################# some configurations #################################
+
+bspc config focused_border_color       "#FF5722"
+bspc config normal_border_color        "#151515"
+bspc config top_padding                 5
+bspc config bottom_padding              34
+bspc config focus_follows_pointer       true
+bspc config border_width                3
+bspc config window_gap                	13
+bspc config split_ratio                 0.5
+bspc config borderless_monocle          true
+
+
+############## autostart configurations #################################
+
+## reload compton
+pkill compton
+compton -b &
+
+# network applet
+nm-applet &
+
+# keybind daemon
+pkill sxhkd
+sxhkd &
+
+## start music server
+mpd &
+
+## reload the xsettingsd, a minimal x settings daemon
+pkill xsettingsd
+xsettingsd &
+
+## set the wallpaper
+nitrogen --set-zoom ~/.config/wallpapers/wallpaper18.jpg
+
+## restart dunst
+pkill dunst
+dunst &
+
+## restart polybar
+pkill polybar
+polybar -c ~/.config/bspwm/polybar crispolybar &
+
+## reload Xresources
+xrdb ~/.Xresources

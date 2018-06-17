@@ -1,0 +1,136 @@
+[colors]
+
+background = #00000000
+background-alt = #333333
+foreground = #EEEEEE
+border = #64FF5722
+border-full = #FF5722
+label = #CC000000
+label-second = #80000000
+label-third = #33000000
+foreground-alt = #787e68
+accent = #81a1c1
+alert = #ebcb8b
+
+
+[bar/crispolybar]
+
+monitor = LVDS1
+height = 24
+width = 1090
+bottom = true
+offset-x = 150
+offset-y = 10
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding-right = 4
+module-margin-left = 2
+module-margin-right = 2
+font-0 = ubuntu:pixelsize=9
+;font-1 = FontAwesome:pixelsize=8
+;font-2 = "Wuncon Siji:pixelsize=10;1"
+tray-position = right
+tray-padding = 5
+tray-background = ${colors.background}
+tray-transparent = true
+
+
+wm-restack = bspwm
+modules-left = bspwm
+modules-center = xwindow
+modules-right = date battery wlan
+override-redirect = true
+
+
+[module/bspwm]
+fuzzy-match = true
+type = internal/bspwm
+label-focused = %name%
+label-focused-background= ${colors.border-full}
+label-focused-padding = 3
+label-occupied = %name%
+label-occupied-padding = 3
+label-occupied-foreground= ${colors.foreground}
+label-occupied-background= ${colors.label-second}
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 3
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-background= ${colors.label-third}
+label-empty-padding = 3
+
+
+[module/xwindow]
+
+type = internal/xwindow
+label = %title:0:100:...%
+format-background = ${colors.label}
+format-padding = 6
+label-maxlen = 50
+
+
+[module/wlan]
+
+type = internal/network
+interface = wlp2s0
+interval = 15
+format-connected = <ramp-signal>  <label-connected>
+label-connected = %essid%
+label-connected-background = #43A047
+label-connected-padding = 6
+label-disconnected-background = ${colors.label-second}
+label-disconnected-padding = 6
+format-disconnected = <label-disconnected>
+label-disconnected =   Disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+ramp-signal-0 = 
+ramp-signal-1 =  
+ramp-signal-2 =  
+ramp-signal-3 =  
+ramp-signal-4 =  
+ramp-signal-5 =  
+ramp-signal-foreground = ${colors.accent}
+
+
+[module/battery]
+
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC
+poll-interval = 60
+format-charging = <ramp-capacity>  <label-charging>
+label-charging =  %percentage%%
+label-charging-background = ${colors.border}
+label-charging-padding = 6
+label-full = Full
+label-full-background = #43A047
+format-discharging = <ramp-capacity>  <label-discharging>
+label-discharging = %percentage%%
+label-discharging-background = ${colors.label-second}
+label-discharging-padding = 6
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.accent}
+
+
+
+[module/date]
+
+type = internal/date
+interval = 30
+label = " %date% %time%"
+date = %Y-%m-%d%
+date-alt = %a %d
+time = %H:%M
+time-alt =
+format-prefix = 
+format-prefix-foreground = ${colors.accent}
+format-background = ${colors.label-second}
+format-foreground = ${colors.foreground}
+format-padding = 6
